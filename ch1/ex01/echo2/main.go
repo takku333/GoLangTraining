@@ -13,9 +13,7 @@ import (
 )
 
 func main() {
-	s, sep := "", ""
-	s += os.Args[0]
-	sep = " "
+	s, sep := os.Args[0], " "
 	for _, arg := range os.Args[1:] {
 		s += sep + arg
 	}
