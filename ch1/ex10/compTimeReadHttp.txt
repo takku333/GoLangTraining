@@ -1,0 +1,10 @@
+loop1
+0.23s   19552 https://www.yahoo.co.jp/
+0.64s   55637 http://qiita.com/taji-taji/items/77845ef744da7c88a6fe
+0.68s   27733 http://golang.jp/
+0.68s elapsed
+loop2
+0.05s   19552 https://www.yahoo.co.jp/
+0.24s   55637 http://qiita.com/taji-taji/items/77845ef744da7c88a6fe
+0.34s   27733 http://golang.jp/
+0.34s elapsed
