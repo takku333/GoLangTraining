@@ -1,4 +1,6 @@
 @echo off
 cd /d %~dp0
 
-go run cf.go conv.go 30 40 50
+go build cf.go conv.go
+cf.exe 30 40 50
+echo 30| cf.exe
