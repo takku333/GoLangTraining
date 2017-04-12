@@ -1,25 +1,26 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+// Author: "Takumi Miyagawa"
+// Copyright © 2017 RICOH Co, Ltd. All rights reserved
 
-// See page 4.
-//!+
-
-// Echo1 prints its command-line arguments.
 package main
 
 import (
 	"fmt"
 	"os"
+	"io"
 )
 
 func main() {
+	printCommandName(os.Stdout)
+}
+
+func printCommandName(w io.Writer) {
 	var s, sep string
 	s += os.Args[0]
 	sep = " "
 	for i := 1; i < len(os.Args); i++ {
 		s += sep + os.Args[i]
 	}
-	fmt.Println(s)
+	fmt.Fprintf(w, s)
 }
 
 //!-
