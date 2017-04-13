@@ -1,4 +1,4 @@
 @echo off
 cd /d %~dp0
 
-go run dpu2.go testFileA.txt testFileB.txt testFileC.txt
+go run dpu2.go testFileA.txt testFileB.txt testFileC.txt testfileD.txt
