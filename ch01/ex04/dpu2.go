@@ -12,9 +12,13 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"io"
 )
-
 func main() {
+	printDupFile(os.Stdout)
+}
+
+func printDupFile(w io.Writer) {
 	counts := make(map[string]map[string]int)
 	files := os.Args[1:]
 	count := 0
@@ -28,13 +32,20 @@ func main() {
 		f.Close()
 	}
 	for line, fnames := range counts {
-		if len(fnames) > 1 {
-			fmt.Printf("%s\n",line)
+		if len(fnames) == 1 {
+			for fname, n := range fnames {
+				if n > 1 {
+					fmt.Fprintf(w, "%s\n",line)
+					fmt.Fprintf(w, "%s, %d\n", fname, n)
+				}
+			}		
+		}else if len(fnames) > 1 {
+			fmt.Fprintf(w,"%s\n",line)
 			for fname, n := range fnames {				
-				fmt.Printf("%s, ", fname)
+				fmt.Fprintf(w, "%s, ", fname)
 				count += n
 			}
-			fmt.Println(count)
+			fmt.Fprintf(w,"%d\n", count)
 			count = 0
 		}
 	}

@@ -12,12 +12,6 @@ import (
 	"gopl.io/ch2/tempconv"
 )
 
-// type flags struct {
-//         convTemp *bool
-//         convLength *bool
-//         convWeight *bool
-// }
-
 func convTemp(val float64) (tempconv.Celsius, tempconv.Fahrenheit) {
 	c := tempconv.Celsius(val)
 	f := tempconv.Fahrenheit(val)
@@ -45,13 +39,6 @@ func kgramToPound(k kgram) pound { return pound(k / 2.20462262) }
 func poundToKgram(p pound) kgram { return kgram(p * 2.20462262) }
 
 func main() {
-	// fs := flags{
-	//     convTemp: flag.Bool("convTemp", false, "convert Temperature"),
-	//     convLength: flag.Bool("convLength", false, "convert length"),
-	//     convWeight: flag.Bool("convWeight", false, "convert Weight"),
-	// }
-
-	// flag.Parse()
 	args := os.Args[1:]
 	if len(args) == 0 {
 		input := bufio.NewScanner(os.Stdin)
@@ -98,8 +85,3 @@ func main() {
 	}
 
 }
-
-//各flagを確認し、全てfalseだった場合は、全てのflagをtrueに変更する
-// func checkFlags (fs flags) {
-
-// }
