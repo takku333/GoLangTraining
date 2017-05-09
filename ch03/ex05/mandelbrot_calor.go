@@ -48,50 +48,12 @@ func mandelbrot(z complex128) color.Color {
 	for n := uint8(0); n < iterations; n++ {
 		v = v*v + z
 		if cmplx.Abs(v) > 2 {
-			factor := float64((255 - contrast*n) / 255)
-			return calcColor(factor)
-		}
-	}
-	return color.Black
-}
-
-func calcColor(factor float64) color.RGBA {
-	c := color.RGBA{}
-	c.R = uint8(float64(highcolor.R-lowcolor.R)*factor) + lowcolor.R
-	c.G = uint8(float64(highcolor.G-lowcolor.G)*factor) + lowcolor.G
-	c.B = uint8(float64(highcolor.B-lowcolor.B)*factor) + lowcolor.B
-
-	return c
-}
-
-// Some other interesting functions:
-
-func acos(z complex128) color.Color {
-	v := cmplx.Acos(z)
-	blue := uint8(real(v)*128) + 127
-	red := uint8(imag(v)*128) + 127
-	return color.YCbCr{192, blue, red}
-}
-
-func sqrt(z complex128) color.Color {
-	v := cmplx.Sqrt(z)
-	blue := uint8(real(v)*128) + 127
-	red := uint8(imag(v)*128) + 127
-	return color.YCbCr{128, blue, red}
-}
-
-// f(x) = x^4 - 1
-//
-// z' = z - f(z)/f'(z)
-//    = z - (z^4 - 1) / (4 * z^3)
-//    = z - (z - 1/z^3) / 4
-func newton(z complex128) color.Color {
-	const iterations = 37
-	const contrast = 7
-	for i := uint8(0); i < iterations; i++ {
-		z -= (z - 1/(z*z*z)) / 4
-		if cmplx.Abs(z*z*z*z-1) < 1e-6 {
-			return color.Gray{255 - contrast*i}
+			return color.RGBA{
+				255 - contrast*n*(n%3),
+				255 - contrast*n*(n%5),
+				255 - contrast*n*(n%7),
+				255,
+			}
 		}
 	}
 	return color.Black
