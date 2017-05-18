@@ -113,16 +113,30 @@ func newton64(z complex64) color.Color {
 // 		im3 := new(big.Float).Mul(im2, im)
 
 // 		ri2 := new(big.Float).Mul(re, im2)
-// 		r2i := new(big.Float).Mul(re2, im
+// 		r2i := new(big.Float).Mul(re2, im)
 
-// 		r3 := r*r*r - 3*r*i*i
-// 		i3 := 3*r*r*i - i*i*i
-// 		r -= (r - 1/r3) / 4
-// 		i -= (i - 1/i3) / 4
+// 		threeRi2 := new(big.Float).Mul(ri2, big.NewFloat(3.0))
+// 		threeR2i := new(big.Float).Mul(r2i, big.NewFloat(3.0))
 
-// 		r4 := r*r*r*r - 6*r*r*i*i + i*i*i*i
-// 		i4 := 4*r*r*r*i - 4*r*i*i*i
-// 		if (complex128(z*z*z*z - 1)) < 1e-6 {
+// 		r3 := new(big.Float).Add(re3, (new(big.Float).Neg(threeRi2)))
+// 		i3 := new(big.Float).Add(threeR2i, (new(big.Float).Neg(im3)))
+
+// 		re = new(big.Float).Quo(new(big.Float).Add(re, new(big.Float).Neg(new(big.Float).Quo(big.NewFloat(1.0), r3))), big.NewFloat(4.0))
+// 		im = new(big.Float).Quo(new(big.Float).Add(im, new(big.Float).Neg(new(big.Float).Quo(big.NewFloat(1.0), i3))), big.NewFloat(4.0))
+
+// 		re4 := new(big.Float).Mul(new(big.Float).Mul(re, re), new(big.Float).Mul(re, re))
+// 		im4 := new(big.Float).Mul(new(big.Float).Mul(im, im), new(big.Float).Mul(im, im))
+// 		r2i2 := new(big.Float).Mul(new(big.Float).Mul(re, re), new(big.Float).Mul(im, im))
+// 		r3i := new(big.Float).Mul(new(big.Float).Mul(re, re), new(big.Float).Mul(re, im))
+// 		ri3 := new(big.Float).Mul(new(big.Float).Mul(re, im), new(big.Float).Mul(im, im))
+
+// 		r4 := new(big.Float).Add(new(big.Float).Add(re4, new(big.Float).Neg(new(big.Float).Mul(r2i2, big.NewFloat(6.0)))), im4)
+// 		i4 := new(big.Float).Add(new(big.Float).Mul(r3i, big.NewFloat(4.0)), new(big.Float).Neg(new(big.Float).Mul(ri3, big.NewFloat(4.0))))
+
+// 		r4dif1 := new(big.Float).Add(r4, new(big.Float).Neg(big.NewFloat(1.0)))
+// 		z4abs := new(big.Float)
+
+// 		if cmplx.Abs(complex128(z*z*z*z-1)) < 1e-6 {
 // 			return color.Gray{255 - contrast*i}
 // 		}
 // 	}
