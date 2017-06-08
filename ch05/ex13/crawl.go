@@ -46,13 +46,10 @@ func save(rawurl string) error {
 	}
 	dir := url.Host
 	var filename string
-	if filepath.Ext(filename) == "" {
+	//if filepath.Ext(filename) == "" {
 		dir = filepath.Join(dir, url.Path)
 		filename = filepath.Join(dir, "index.html")
-	} else {
-		dir = filepath.Join(dir, filepath.Dir(url.Path))
-		filename = url.Path
-	}
+	//} 
 	err = os.MkdirAll(dir, 0777)
 	if err != nil {
 		return err
