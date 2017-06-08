@@ -1,0 +1,456 @@
+<html xmlns="http://www.w3.org/1999/xhtml" prefix="" lang="ja"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>golang.jp - プログラミング言語Goの情報サイト</title>
+<meta name="generator" content="WordPress 4.7.5">
+<meta name="robots" content="follow, all">
+<link rel="stylesheet" href="http://golang.jp/wp-content/themes/golang/style.css" type="text/css" media="screen">
+<link rel="alternate" type="application/rss+xml" title="%s RSS Feedgolang.jp" href="http://golang.jp/feed">
+<link rel="pingback" href="http://golang.jp/xmlrpc.php">
+<!--[if IE]><link rel="stylesheet" href="http://golang.jp/wp-content/themes/golang/ie.css" type="text/css" media="screen" /><![endif]-->
+<!--[if lte IE 6]><link rel="stylesheet" href="http://golang.jp/wp-content/themes/golang/ie6.css" type="text/css" media="screen" /><![endif]-->
+<script src="https://pagead2.googlesyndication.com/pub-config/r20160913/ca-pub-0582685017356115.js"></script><script type="text/javascript" src="http://golang.jp/wp-content/themes/eos/default.js"></script>
+
+<!-- BEGIN Metadata added by the Add-Meta-Tags WordPress plugin -->
+<meta name="description" content="Googleにより開発されたプログラミング言語「Go」に関する情報サイトです。公式サイトの翻訳、Go言語に関する情報を集約していきます。">
+<meta name="keywords" content="golang,Go言語,google,プログラミング,ガイド,リファレンス,ドキュメント,翻訳,入門,チュートリアル,FAQ,インストール,言語仕様,コマンド,パッケージ,ソース">
+<!-- END Metadata added by the Add-Meta-Tags WordPress plugin -->
+
+<link rel="dns-prefetch" href="//s.w.org">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/golang.jp\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="http://golang.jp/wp-includes/js/wp-emoji-release.min.js?ver=4.7.5" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="https://api.w.org/" href="http://golang.jp/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://golang.jp/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://golang.jp/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.7.5">
+<link rel="alternate" media="handheld" type="text/html" href="http://golang.jp/">
+	<link type="text/css" rel="stylesheet" href="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/styles/shCore.css">
+	<link type="text/css" rel="stylesheet" href="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/styles/shThemeDefault.css">
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shCore.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushBash.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushCpp.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushCSharp.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushCss.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushDelphi.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushDiff.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushGroovy.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushJava.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushPerl.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushPhp.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushPlain.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushPython.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushRuby.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushScala.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushSql.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushVb.js"></script>
+	<script type="text/javascript" src="http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushXml.js"></script>
+	<script type="text/javascript">		
+		SyntaxHighlighter.config.clipboardSwf = 'http://golang.jp/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/clipboard.swf';
+		SyntaxHighlighter.all();
+	</script>
+	
+</head>
+
+<body><a name="top"></a><a id="skipToContent" href="#content">Skip to content</a>
+<div class="PageContainer">
+
+<div class="Header">
+
+<div class="HeaderMenu" id="HeaderMenu">
+  <ul>
+		<li><a href="http://golang.jp">Home</a></li>
+  		<li class="cat-item cat-item-8"><a href="http://golang.jp/category/%e3%82%b3%e3%83%a9%e3%83%a0">コラム</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://golang.jp/category/%e3%83%89%e3%82%ad%e3%83%a5%e3%83%a1%e3%83%b3%e3%83%88">ドキュメント</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://golang.jp/category/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9">ニュース</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://golang.jp/category/%e6%9c%aa%e5%88%86%e9%a1%9e">未分類</a>
+</li>
+	</ul>
+	<span class="clear"></span>
+</div>
+
+<div class="HeaderSubArea">
+	<h1><a href="http://golang.jp">golang.jp</a></h1>
+	<span>プログラミング言語Goの情報サイト</span>
+	<div class="SearchBox">
+		<form method="get" action="http://golang.jp/">
+			<input type="text" class="SearchQuery" id="SearchQuery" value="Search here..." name="s">
+			<input type="submit" name="submit" class="SearchButton" value="Find">
+		</form>
+	</div>
+	<div class="HeaderSubMenu" id="HeaderSubMenu">
+		<ul>
+<li class="page_item page-item-26"><a href="http://golang.jp/about_go" title="Go言語とは">Go言語とは</a></li>
+<li class="page_item page-item-3"><a href="http://golang.jp/install" title="Go言語のインストール">Go言語のインストール</a></li>
+<li class="page_item page-item-170"><a href="http://golang.jp/go_tutorial" title="チュートリアル">チュートリアル</a></li>
+<li class="page_item page-item-550"><a href="http://golang.jp/effective_go" title="実践Go言語">実践Go言語</a></li>
+<li class="page_item page-item-2383"><a href="http://golang.jp/go_spec" title="Go言語仕様">Go言語仕様</a></li>
+<li class="page_item page-item-253"><a href="http://golang.jp/pkg" title="パッケージドキュメント">パッケージドキュメント</a></li>
+		</ul>
+		<span class="clear"></span>
+	</div>
+</div> <!-- Closes .HeaderSubArea -->
+
+</div> <!-- Closes .Header -->
+<a name="content"></a>
+
+<div id="contentWrapper">
+	<div id="contentArea">
+				<div class="headerBar">
+			<div id="text-3" class="headerbox  widget_text">			<div class="textwidget"><div style="color:#66f;padding-left:15px">
+Go言語とは、Googleが開発した新しいプログラミング言語です。<br>
+当サイトではこの新しい言語についての情報を集約していきます。<br>
+<span style="color:#f00">このサイトの主要コンテンツは、公式サイトの日本語訳です。右側のメニューから選んでください。</span>
+</div>
+<hr></div>
+		</div>		</div>
+			
+								
+		<div class="post">
+			<div class="postHeader">
+				<h2 class="postTitle"><span></span><a href="http://golang.jp/2013/05/3773" title="Permalink to Go 1.1リリース">Go 1.1リリース</a></h2>
+				<span class="postMonth" title="2013">5月</span>
+				<span class="postDay" title="2013">14</span>
+				<div class="postSubTitle"><span class="postCategories"><a href="http://golang.jp/category/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9" rel="category tag">ニュース</a></span></div>
+			</div>
+			<div class="postContent"><p>本日、Go 1.1がリリースされました。(<a href="http://golang.org/doc/go1.1" target="_blank">http://golang.org/doc/go1.1</a>)<br>
+以下、Go 1からの変更点の要約です。</p>
+<h2>ゼロ除算</h2>
+<p style="padding-left: 30px;">Go 1では、定数0による除算ではランタイムパニックが発生していましたが、Go 1.1ではコンパイル時にエラーとなります。</p>
+<h2>Unicodeリテラルのサロゲート</h2>
+<p style="padding-left: 30px;">　文字列リテラル、およびルーンリテラルでは、サロゲートハーフが使用できなくなりました。</p>
+<h2>メソッド値</h2>
+<p style="padding-left: 30px;">　新機能の「メソッド値」とは、特定の値をレシーバとする「関数の値」です。<br>
+例）f := t.Mv; f(7)</p>
+<h2>gccgoの状況</h2>
+<p style="padding-left: 30px;">　Go言語とGCCのリリーススケジュールとは一致しないため、どうしても差が生じます。<br>
+バージョン4.8.0では、Go1.1がほぼ実装されますが、メソッド値は実装されません。</p>
+<h2>コマンドラインのフラグ処理</h2>
+<p style="padding-left: 30px;">　コンパイラなどのGo言語のツール類は、Go言語のflagパッケージと同じ処理に変わります。<br>
+【Go 1】 go tool 6c -Fw -Dfoo<br>
+【Go 1.1】 go tool 6c -F -w -D foo</p>
+<h2>64ビット環境におけるintのサイズ</h2>
+<p style="padding-left: 30px;">　以前のバージョンでは、どの環境でもintおよびuint型のサイズは32ビットでしたが、64ビット環境では64ビットになります。</p>
+<h2>64ビット環境におけるヒープサイズ</h2>
+<p style="padding-left: 30px;">　64ビット環境における最大ヒープサイズは数ギガ～数10ギガに拡大されました。</p>
+<h2>Unicode</h2>
+<p style="padding-left: 30px;">　UTF-16で、65535以上のコードポイント値を表せるようになりました。これはUTF-16のみで、それ以外ではサロゲート領域のコードポイントは不正となります。</p>
+<h2>Race detector</h2>
+<p style="padding-left: 30px;">　「Race detector」はバグ発見ツールです。現在は64ビットx86プロセッサにのみ対応しています。<br>
+例) go test -race</p>
+<p>&nbsp;</p>
+</div>
+			<div class="postFooter">
+				<span class="postComments"><a href="http://golang.jp/2013/05/3773#respond">Leave a Comment</a></span>
+				<span class="postTags"><span>none</span></span>				<a class="postReadMore" href="http://golang.jp/2013/05/3773"><b><b><b>Read more</b></b></b></a>
+			</div>
+		</div>
+				
+				
+		<div class="post">
+			<div class="postHeader">
+				<h2 class="postTitle"><span></span><a href="http://golang.jp/2012/10/3765" title="Permalink to 翻訳更新のお知らせ">翻訳更新のお知らせ</a></h2>
+				<span class="postMonth" title="2012">10月</span>
+				<span class="postDay" title="2012">24</span>
+				<div class="postSubTitle"><span class="postCategories"><a href="http://golang.jp/category/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9" rel="category tag">ニュース</a></span></div>
+			</div>
+			<div class="postContent"><p>Goプログラミング言語仕様の翻訳を最新(Version of September 4, 2012)にアップデートしました。</p>
+<p>主に表記が変わっただけです。<br>
+「文字(charactor)」→「ルーン(rune)」</p>
+</div>
+			<div class="postFooter">
+				<span class="postComments"><a href="http://golang.jp/2012/10/3765#respond">Leave a Comment</a></span>
+				<span class="postTags"><span>none</span></span>				<a class="postReadMore" href="http://golang.jp/2012/10/3765"><b><b><b>Read more</b></b></b></a>
+			</div>
+		</div>
+				
+				
+		<div class="post">
+			<div class="postHeader">
+				<h2 class="postTitle"><span></span><a href="http://golang.jp/2012/08/3759" title="Permalink to 翻訳更新のお知らせ">翻訳更新のお知らせ</a></h2>
+				<span class="postMonth" title="2012">8月</span>
+				<span class="postDay" title="2012">23</span>
+				<div class="postSubTitle"><span class="postCategories"><a href="http://golang.jp/category/%e3%83%89%e3%82%ad%e3%83%a5%e3%83%a1%e3%83%b3%e3%83%88" rel="category tag">ドキュメント</a></span></div>
+			</div>
+			<div class="postContent"><p>公式サイトの更新を反映しました。</p>
+<ul>
+<li><a href="http://golang.jp/install">Go言語のインストール</a></li>
+<li><a href="http://golang.jp/go_faq">FAQ</a></li>
+</ul>
+</div>
+			<div class="postFooter">
+				<span class="postComments"><a href="http://golang.jp/2012/08/3759#respond">Leave a Comment</a></span>
+				<span class="postTags"><span>none</span></span>				<a class="postReadMore" href="http://golang.jp/2012/08/3759"><b><b><b>Read more</b></b></b></a>
+			</div>
+		</div>
+				
+				
+		<div class="post">
+			<div class="postHeader">
+				<h2 class="postTitle"><span></span><a href="http://golang.jp/2012/05/3748" title="Permalink to 翻訳更新のお知らせ">翻訳更新のお知らせ</a></h2>
+				<span class="postMonth" title="2012">5月</span>
+				<span class="postDay" title="2012">3</span>
+				<div class="postSubTitle"><span class="postCategories"><a href="http://golang.jp/category/%e3%83%89%e3%82%ad%e3%83%a5%e3%83%a1%e3%83%b3%e3%83%88" rel="category tag">ドキュメント</a></span></div>
+			</div>
+			<div class="postContent"><p><a href="http://golang.jp/go_spec">Goプログラミング言語仕様</a>の翻訳を最新にアップデートしました。<br>
+細かい更新箇所は多いのですが、前回の翻訳からの変更点は以下です。</p>
+<ul>
+<li>マップの要素を削除するdelete組み込み関数が追加された。</li>
+<li>rune型(他言語のchar型のようなもの)が追加された。</li>
+<li>init関数内でゴルーチンが起動できるようになった。</li>
+<li>標準関数が返却するエラー情報は、新たに追加されたerror組み込み型を使用するようになった。</li>
+</ul>
+<p><em>&nbsp;※2012/5/9 タイプミスを修正しました。報告いただきありがとうございました。</em></p>
+</div>
+			<div class="postFooter">
+				<span class="postComments"><a href="http://golang.jp/2012/05/3748#respond">Leave a Comment</a></span>
+				<span class="postTags"><span>none</span></span>				<a class="postReadMore" href="http://golang.jp/2012/05/3748"><b><b><b>Read more</b></b></b></a>
+			</div>
+		</div>
+				
+				
+		<div class="post">
+			<div class="postHeader">
+				<h2 class="postTitle"><span></span><a href="http://golang.jp/2012/04/3741" title="Permalink to 翻訳更新のお知らせ">翻訳更新のお知らせ</a></h2>
+				<span class="postMonth" title="2012">4月</span>
+				<span class="postDay" title="2012">24</span>
+				<div class="postSubTitle"><span class="postCategories"><a href="http://golang.jp/category/%e3%83%89%e3%82%ad%e3%83%a5%e3%83%a1%e3%83%b3%e3%83%88" rel="category tag">ドキュメント</a></span></div>
+			</div>
+			<div class="postContent"><p>久しぶりの翻訳更新です。<a href="/install"><br>
+Go言語のインストール</a>の翻訳を更新しました。</p>
+<p>いままではGo言語をソースファイルから自分でコンパイルするしかなかったのですが、Version1からバイナリで配布されるようになりました。また、Windowsも正式にサポートされるようになりました。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+			<div class="postFooter">
+				<span class="postComments"><a href="http://golang.jp/2012/04/3741#respond">Leave a Comment</a></span>
+				<span class="postTags"><span>none</span></span>				<a class="postReadMore" href="http://golang.jp/2012/04/3741"><b><b><b>Read more</b></b></b></a>
+			</div>
+		</div>
+				
+		
+		<div id="pageNavigation">
+							<span id="newerEntries"></span>
+				<span id="olderEntries"><a href="http://golang.jp/page/2">Older Entries</a></span>
+					</div>
+
+		<div class="footerBar">
+				</div>
+		
+				
+	</div>
+	
+	<div class="SideBars">
+<div class="SidebarButtons">
+	<a class="RssButton" href="http://golang.jp/feed">golang.jp</a>	</div>
+<div class="SideBar_Full">
+	<ul>
+	
+	<li id="text-4" class="sidebaritem widget_text"><div class="sidebarbox"><h2 class="widgettitle">Goを始める</h2>			<div class="textwidget"><ul>
+
+<li class="page_item"><a href="/about_go">Go言語とは</a></li>
+
+<li class="page_item">
+	<a href="/install">Go言語のインストール[日本語訳]</a>
+	- <a href="http://golang.org/doc/install.html" target="_blank" title="Installing Go">[原文]</a></li>
+
+</ul></div>
+		</div></li><li id="text-6" class="sidebaritem widget_text"><div class="sidebarbox"><h2 class="widgettitle">Goを学ぶ</h2>			<div class="textwidget"><ul>
+
+<li class="page_item">
+	<a href="/go_tutorial">チュートリアル[日本語訳]</a>
+	- <a href="http://golang.org/doc/go_tutorial.html" target="_blank" title="A Tutorial for the Go Programming Language">[原文]</a></li>
+
+<li class="page_item">
+	<a href="/effective_go">実践Go言語[日本語訳]</a>
+	- <a href="http://golang.org/doc/effective_go.html" target="_blank" title="Effective Go">[原文]</a></li>
+
+<li class="page_item">
+	<a href="/go_faq">FAQ[日本語訳]</a>
+	- <a href="http://golang.org/doc/go_faq.html" target="_blank" title="FAQ">[原文]</a></li>
+
+<li class="page_item">
+	<a href="/code">Goコードの書き方[日本語訳]</a>
+	- <a href="http://golang.org/doc/code.html" target="_blank" title="How to Write Go Code">[原文]</a></li>
+
+<li class="page_item">
+	<a href="/codelab-wiki">Codelab: Webアプリ[日本語訳]</a>
+	- <a href="http://golang.org/doc/codelab/wiki/" target="_blank" title="Codelab: Writing Web Applications">[原文]</a></li>
+
+<li class="page_item">
+	<a href="/go_for_cpp_programmers">C++プログラマ向けGo講座[日本語訳]</a>
+	- <a href="http://golang.org/doc/go_for_cpp_programmers.html" target="_blank" title="Go For C++ Programmers">[原文]</a></li>
+
+</ul></div>
+		</div></li><li id="text-5" class="sidebaritem widget_text"><div class="sidebarbox"><h2 class="widgettitle">Goのリファレンス</h2>			<div class="textwidget"><ul>
+
+<li class="page_item">
+	<a href="/pkg">パッケージドキュメント[日本語訳]</a>
+	- <a href="http://golang.org/pkg" target="_blank" title="Package documentation">[原文]</a></li>
+
+<li class="page_item">
+	<a href="/go_spec">Goプログラミング言語仕様[日本語訳]</a>
+	- <a href="http://golang.org/doc/go_spec.html" target="_blank" title="The Go Programming Language Specification">[原文]</a></li>
+
+<li class="page_item">
+	<a href="/go_mem">Goのメモリモデル[日本語訳]</a>
+	- <a href="http://golang.org/doc/go_mem.html" target="_blank" title="The Go Memory Model">[原文]</a></li>
+
+</ul></div>
+		</div></li><li id="text-10" class="sidebaritem widget_text"><div class="sidebarbox"><h2 class="widgettitle">書籍のご案内</h2>			<div class="textwidget"><div>
+<div style="float:left">
+<a href="http://www.c-r.com/book/detail/897" target="_blank">
+<img src="http://golang.jp/images/book.jpg" width="110" height="156">
+</a>
+</div>
+<div style="float:left;margin-left:10px">
+<a href="http://www.c-r.com/book/detail/897" target="_blank">
+基礎からわかるGo言語
+</a>
+<p>
+ISBN：978-4-86354-117-7<br>
+A5判/ソフトカバー<br>
+11月20日発売予定<br>
+</p>
+</div>
+</div>
+<div style="clear:both">
+</div></div>
+		</div></li><li id="text-9" class="sidebaritem widget_text"><div class="sidebarbox"><h2 class="widgettitle">広告</h2>			<div class="textwidget"><div style="margin-left:10px">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-0582685017356115";
+/* golang スクエア */
+google_ad_slot = "6341746930";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:250px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:250px;background-color:transparent"><iframe width="250" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:250px;height:250px;"></iframe></ins></ins>
+</div></div>
+		</div></li><li id="text-8" class="sidebaritem widget_text"><div class="sidebarbox"><h2 class="widgettitle">その他</h2>			<div class="textwidget"><ul>
+
+<li class="page_item">
+	<a href="/devel-roadmap">Goロードマップ[日本語訳]</a>
+	- <a href="http://golang.org/doc/devel/roadmap.html" target="_blank" title="Roadmap">[原文]</a></li>
+
+</ul></div>
+		</div></li><li id="linkcat-5" class="sidebaritem widget_links"><div class="sidebarbox"><h2 class="widgettitle">リンク</h2>
+	<ul class="xoxo blogroll">
+<li><a href="http://golang.org/" title="Go言語公式サイト" target="_blank">golang.org</a>
+Go言語公式サイト</li>
+<li><a href="http://qa-honpo.com/index.php?cid=154" title="Go言語関連のQ&amp;A" target="_blank">Ｑ＆Ａ本舗</a>
+Go言語関連のQ&amp;A</li>
+
+	</ul>
+</div></li>
+<li id="archives-3" class="sidebaritem widget_archive"><div class="sidebarbox"><h2 class="widgettitle">アーカイブ</h2>		<ul>
+			<li><a href="http://golang.jp/date/2013/05">2013年5月</a></li>
+	<li><a href="http://golang.jp/date/2012/10">2012年10月</a></li>
+	<li><a href="http://golang.jp/date/2012/08">2012年8月</a></li>
+	<li><a href="http://golang.jp/date/2012/05">2012年5月</a></li>
+	<li><a href="http://golang.jp/date/2012/04">2012年4月</a></li>
+	<li><a href="http://golang.jp/date/2012/03">2012年3月</a></li>
+	<li><a href="http://golang.jp/date/2011/09">2011年9月</a></li>
+	<li><a href="http://golang.jp/date/2011/08">2011年8月</a></li>
+	<li><a href="http://golang.jp/date/2011/05">2011年5月</a></li>
+	<li><a href="http://golang.jp/date/2011/04">2011年4月</a></li>
+	<li><a href="http://golang.jp/date/2011/02">2011年2月</a></li>
+	<li><a href="http://golang.jp/date/2011/01">2011年1月</a></li>
+	<li><a href="http://golang.jp/date/2010/12">2010年12月</a></li>
+	<li><a href="http://golang.jp/date/2010/11">2010年11月</a></li>
+	<li><a href="http://golang.jp/date/2010/08">2010年8月</a></li>
+	<li><a href="http://golang.jp/date/2010/07">2010年7月</a></li>
+	<li><a href="http://golang.jp/date/2010/06">2010年6月</a></li>
+	<li><a href="http://golang.jp/date/2010/05">2010年5月</a></li>
+	<li><a href="http://golang.jp/date/2010/04">2010年4月</a></li>
+	<li><a href="http://golang.jp/date/2010/03">2010年3月</a></li>
+	<li><a href="http://golang.jp/date/2010/02">2010年2月</a></li>
+	<li><a href="http://golang.jp/date/2010/01">2010年1月</a></li>
+	<li><a href="http://golang.jp/date/2009/12">2009年12月</a></li>
+	<li><a href="http://golang.jp/date/2009/11">2009年11月</a></li>
+		</ul>
+		</div></li>	
+	</ul>
+</div><!-- Closes .SideBar_Full -->
+<div class="SideBar_Left">
+	<ul>
+		
+	<li>
+	<div class="sidebarbox">
+	<h2>Categories</h2>
+	<ul>
+			<li class="cat-item cat-item-8"><a href="http://golang.jp/category/%e3%82%b3%e3%83%a9%e3%83%a0">コラム</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://golang.jp/category/%e3%83%89%e3%82%ad%e3%83%a5%e3%83%a1%e3%83%b3%e3%83%88">ドキュメント</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://golang.jp/category/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9">ニュース</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://golang.jp/category/%e6%9c%aa%e5%88%86%e9%a1%9e">未分類</a>
+</li>
+	</ul>
+	</div>
+	</li>
+	
+		</ul>
+</div><!-- Closes .SideBar_Left -->
+<div class="SideBar_Right">
+	<ul>
+		
+	<li>
+	<div class="sidebarbox">
+	<h2>Meta</h2>
+	<ul>
+				<li><a href="http://golang.jp/wp-login.php">ログイン</a></li>
+		<li><a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a></li>
+			</ul>
+	</div>
+	</li>
+	
+		</ul>
+</div><!-- Closes .SideBar_Right -->
+<div class="SideBar_Full_Bottom">
+	<ul>
+	
+			
+	</ul>
+</div><!-- Closes .SideBar_Full -->
+</div><!-- Closes .SideBars -->
+
+
+
+	
+</div>
+
+<div class="Footer">
+	<span class="copyright">Copyright © 2009-2010 <a href="http://www.abell.co.jp" taraget="_blank alt=" 株式会社エイベル"="">株式会社エイベル</a></span>
+	<span class="themeInfo">Design by <a href="http://www.srssolutions.com/en/" title="SRS Internet Marketing Solutions">SRS Solutions</a></span>
+	<a class="moveToTop" href="#top">top</a>
+</div><!-- Closes .Footer -->
+
+</div><!-- Closes .PageContainer -->
+
+
+
+
+<script type="text/javascript" src="http://golang.jp/wp-includes/js/wp-embed.min.js?ver=4.7.5"></script>
+
+</body></html>
